@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { LayoutBlog } from '../layouts/layoutBlog'
+import { LayoutBlog } from '../layouts/LayoutBlog'
 import './index.module.css'
 import useSiteMetadata from '../hooks/useSiteMetadata'
 import useBlogCategories from '../hooks/useBlogCategories'
