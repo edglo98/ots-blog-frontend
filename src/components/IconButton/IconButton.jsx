@@ -1,8 +1,7 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import SVG from 'react-inlinesvg'
-import { Button, Box, Heading } from 'theme-ui'
+import { Button, Heading } from 'theme-ui'
 
 const styles = {
   button: {
@@ -82,13 +81,7 @@ export const IconButton = ({
   iconPath,
   variant
 }) => (
-  <Button variant='none' as={to && Link} to={to} sx={styles.button[variant]}>
-    {(Icon || iconPath) && (
-      <Box sx={styles.icon[variant]}>
-        {iconPath && <SVG src={iconPath} />}
-        {Icon && <Icon color={color} />}
-      </Box>
-    )}
+  <Button style={{ overflow: 'hidden', borderBottom: `6px solid ${color}` }} variant='none' as={to && Link} to={to} sx={styles.button[variant]}>
     <Heading variant='h4' as='span' sx={styles.text}>
       {title}
     </Heading>

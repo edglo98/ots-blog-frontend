@@ -1,5 +1,5 @@
 /* Replacement for slick-carousel/slick/slick-theme.css */
-/* .with-animation .slick-slide {
+.with-animation .slick-slide {
   transition: all 600ms ease;
   opacity: 1;
   transform: scale(1);
@@ -13,12 +13,12 @@
 
 .slick-prev,
 .slick-next {
+  top: auto;
+  bottom: 3;
+  left: '50%';
+  transform: translate(-125%, 0);
   position: absolute;
-  top: 50%;
   z-index: 2;
-  -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-  transform: translate(0, -50%);
 }
 
 .slick-prev {
@@ -38,9 +38,9 @@
   padding: 0;
   margin: 0;
   width: 100%;
-  top: -4rem;
+  bottom: -1rem;
   padding-top: 0.5rem;
-  text-align: right;
+  text-align: left;
 }
 
 .slick-dots li {
@@ -69,4 +69,4 @@
 
 .slick-dots li.slick-active button {
   background-color: #4a5568;
-} */
+}

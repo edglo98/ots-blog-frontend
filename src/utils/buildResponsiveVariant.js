@@ -1,16 +1,16 @@
 import castArray from './castArray'
 
-//Builds theme-ui variant dynamically
+// Builds theme-ui variant dynamically
 export default (a, b, c) => {
-  //Responsive variant is passed
-  //Add variant child(b) to variant only
+  // Responsive variant is passed
+  // Add variant child(b) to variant only
   if (Array.isArray(a)) {
     return a.map(variant => [variant, b].join('.'))
   }
 
-  //Variant group is passed
+  // Variant group is passed
   return castArray(b).map(variant => {
-    let values = [a, variant]
+    const values = [a, variant]
 
     if (c) {
       values.push(c)

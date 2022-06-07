@@ -20,17 +20,16 @@ const styles = {
 }
 
 const Categories = ({ variant, categories }) => {
-  console.log({ categories })
   return (
     <Box sx={styles[variant]}>
       {categories &&
-        categories.map(({ code, color, id, title, icon = null }) => {
+        categories.map(({ code, color, id, name, icon = null }) => {
           const buttonProps = {
             key: id,
             code,
             to: '/category/' + code,
             color,
-            title,
+            title: name,
             // iconPath: icon,
             variant,
             Icon: !icon && FaArchive

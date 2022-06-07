@@ -2,15 +2,10 @@ const edjsHTML = require('editorjs-html')
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
-  // createPage({
-  //   path: "/using-dsg",
-  //   component: require.resolve("./src/templates/using-dsg.js"),
-  //   context: {},
-  //   defer: true,
-  // })
+
   const posts = await graphql(`
-    query AllPost {
-      allStrapiPost(sort: {fields: createdAt, order: DESC}) {
+    query {
+      allStrapiPost {
         nodes {
           id
           title
@@ -20,11 +15,17 @@ exports.createPages = async ({ actions, graphql }) => {
           publication_date
           premium
           updatedAt
-          url
-          categories {
+          slug
+          category {
             id
             color
-            title
+            name
+            code
+          }
+          tags {
+            id
+            color
+            name
             code
           }
           content {
@@ -39,7 +40,7 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         }
       }
-    }  
+    }
   `)
 
   function rawParser (block) {
@@ -72,7 +73,7 @@ exports.createPages = async ({ actions, graphql }) => {
     post.HtmlContent = html
 
     createPage({
-      path: '/' + post.url,
+      path: '/' + post.slug,
       component: require.resolve('./src/templates/posts/posts.js'),
       context: {
         post

@@ -32,7 +32,7 @@ const red = {
   500: '#f56565'
 }
 
-//Primary
+// Primary
 const alpha = {
   alphaLighter: indigo[100],
   alphaLight: indigo[300],
@@ -66,7 +66,7 @@ const omega = {
 }
 
 export default {
-  text: gray[600],
+  text: gray[800],
   article: gray[700],
   heading: gray[800],
 
@@ -80,9 +80,8 @@ export default {
   success: green[500],
   errorLight: red[100],
   error: red[500],
-
-  white: white,
-  background: `#f8f8f8`,
+  white,
+  background: '#f8f8f8',
   contentBg: white,
   headerBg: white,
   footerBg: white,
@@ -110,7 +109,7 @@ export default {
       omegaDark: omega.omegaLight,
       omegaDarker: omega.omegaLighter,
 
-      text: gray[400],
+      text: white,
       article: gray[300],
       heading: gray[200],
 

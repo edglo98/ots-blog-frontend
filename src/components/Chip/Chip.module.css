@@ -1,0 +1,7 @@
+.chip {
+  width: min-content;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+}

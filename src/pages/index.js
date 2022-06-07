@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { LayoutBlog } from '../layouts/LayoutBlog'
 import './index.module.css'
@@ -8,18 +8,19 @@ import { Box } from 'theme-ui'
 import Categories from '../components/Categories/Categories'
 import Divider from '../components/Divider/Divider'
 import { Hero } from '../components/Hero/Hero'
-import CardList from '../components/CardList/CardList'
+import { Carousel } from '../components/Carousel/Carousel'
+import { ArticleCard } from '../components/ArticleCard/ArticleCard'
+import { SectionDivider } from '../components/SectionDivider/SectionDivider'
+import { Grid } from '../components/Grid/Grid'
 
 export default function Home (props) {
-  console.log('Props de page', props)
   const { title } = useSiteMetadata()
   const categories = useBlogCategories()
-  const sliderRef = useRef()
 
   const postsResponse = useStaticQuery(graphql`
     query {
-      allStrapiPost(
-        sort: {fields: createdAt, order: DESC}, 
+      lastPostsSorts: allStrapiPost(
+        sort: {fields: publication_date, order: DESC},
         limit: 3
       ) {
         nodes {
@@ -31,27 +32,202 @@ export default function Home (props) {
           publication_date
           premium
           updatedAt
-          url
-          categories {
+          slug
+          admin_users {
+            firstname
+            lastname
+          }
+          category {
             id
             color
-            title
+            name
             code
           }
-          miniature {
-            url
+          tags {
+            id
+            color
+            name
+            code
           }
           content {
             data {
               content
             }
           }
+          miniature {
+            url
+            size
+            name
+          }
+        }
+      }
+
+      randomPosts: allStrapiPost(
+        sort: {fields: updatedAt, order: DESC},
+        limit: 6
+      ) {
+        nodes {
+          id
+          title
+          seo_title
+          seo_description
+          publish
+          publication_date
+          premium
+          updatedAt
+          slug
+          admin_users {
+            firstname
+            lastname
+          }
+          category {
+            id
+            color
+            name
+            code
+          }
+          tags {
+            id
+            color
+            name
+            code
+          }
+          content {
+            data {
+              content
+            }
+          }
+          miniature {
+            url
+            size
+            name
+          }
+        }
+      }
+
+      fisicaPosts: allStrapiPost(
+        limit: 6,
+        sort: {fields: updatedAt, order: DESC},
+        filter: {
+          category: {
+            code: { eq: "fisica-1"}
+          }
+        }
+      ) {
+        nodes {
+          id
+          title
+          seo_title
+          seo_description
+          publish
+          publication_date
+          premium
+          updatedAt
+          slug
+          admin_users {
+            firstname
+            lastname
+          }
+          category {
+            id
+            color
+            name
+            code
+          }
+          tags {
+            id
+            color
+            name
+            code
+          }
+          content {
+            data {
+              content
+            }
+          }
+          miniature {
+            url
+            size
+            name
+          }
+        }
+      }
+
+      techPosts: allStrapiPost(
+        limit: 6,
+        sort: {fields: updatedAt, order: DESC},
+        filter: {
+          tags: {
+            elemMatch:{
+              code: {eq: "tecnologia-1"}
+            }
+          }
+        }
+      ) {
+        nodes {
+          id
+          title
+          seo_title
+          seo_description
+          publish
+          publication_date
+          premium
+          updatedAt
+          slug
+          admin_users {
+            firstname
+            lastname
+          }
+          category {
+            id
+            color
+            name
+            code
+          }
+          tags {
+            id
+            color
+            name
+            code
+          }
+          content {
+            data {
+              content
+            }
+          }
+          miniature {
+            url
+            size
+            name
+          }
         }
       }
     }
   `)
 
-  console.log(postsResponse)
+  const last3 = postsResponse.lastPostsSorts.nodes.map(post => ({
+    description: post.seo_description,
+    image: process.env.STRAPI_API_URL + post.miniature.url,
+    ...post
+  }))
+
+  const randomPosts = postsResponse.randomPosts.nodes.map(post => ({
+    description: post.seo_description,
+    image: process.env.STRAPI_API_URL + post.miniature.url,
+    ...post
+  }))
+
+  const fisicaPosts = postsResponse.fisicaPosts.nodes.map(post => ({
+    description: post.seo_description,
+    image: process.env.STRAPI_API_URL + post.miniature.url,
+    ...post
+  }))
+
+  const techPosts = postsResponse.techPosts.nodes.map(post => ({
+    description: post.seo_description,
+    image: process.env.STRAPI_API_URL + post.miniature.url,
+    ...post
+  }))
 
   return (
     <LayoutBlog>
@@ -69,7 +245,7 @@ export default function Home (props) {
       >
         <Divider space={3} />
         <Box sx={{ position: 'relative', zIndex: 3 }}>
-          <h1>
+          <h1 style={{ textAlign: 'center', fontSize: 40 }}>
             {title}
           </h1>
           <Box sx={{ display: ['none', 'block'] }}>
@@ -79,60 +255,71 @@ export default function Home (props) {
             />
             <Divider />
           </Box>
-          <CardList
-            nodes={
-              postsResponse.allStrapiPost.nodes.map(post => ({
-                category: {
-                  ...post.categories[0],
-                  slug: post.categories[0].code,
-                  name: post.categories[0].title
-                },
-                title: post.title,
-                slug: post.url,
-                link: post.url,
-                excerpt: post.seo_description,
-                image: process.env.STRAPI_API_URL + post.miniature.url,
-                ...post
-              }))
-            }
-            variant={['horizontal-hero']}
-            limit={3}
-            omitFooter
-            slider
-            autoPlay
-            fade
-            arrows={false}
-            controlPosition='bottom'
-            ref={sliderRef}
-            loading='eager'
+          <Carousel
+            itemsList={last3}
           />
           <Box sx={{ display: ['none', null, 'block'] }}>
             <Divider />
-            <CardList
-              nodes={
-                postsResponse.allStrapiPost.nodes.map(post => ({
-                  category: {
-                    ...post.categories[0],
-                    slug: post.categories[0].code,
-                    name: post.categories[0].title
-                  },
-                  title: post.title,
-                  slug: post.url,
-                  link: post.url,
-                  image: process.env.STRAPI_API_URL + post.miniature.url,
-                  excerpt: post.seo_description,
-                  ...post
-                }))
+            <div style={{ display: 'flex', margin: '-0.5rem', gap: 15 }}>
+              {
+                last3.map(post => (
+                  <ArticleCard key={post.id} post={post} />
+                ))
               }
-              variant={['horizontal-md', 'horizontal-aside']}
-              limit={3}
-              columns={[1, 0, 3]}
-              omitCategory
-              asNavFor={sliderRef}
-              loading='eager'
-            />
+            </div>
           </Box>
         </Box>
+      </Hero>
+
+      <Hero
+        pt={4}
+        pb={5}
+      >
+        <SectionDivider title='Últimos articulos' />
+        <Box style={{ display: 'flex', gap: 15, flexWrap: 'wrap' }} sx={{ flexDirection: ['column', null, 'row'] }}>
+          <Box sx={{ flexDirection: ['row', null, 'column'], flexWrap: 'wrap' }} style={{ flex: '1 1', display: 'flex', gap: 15 }}>
+            {randomPosts.slice(0, 2).map(post => (
+              <ArticleCard type='image' key={post.id} post={post} />
+            ))}
+          </Box>
+          <Box style={{ flex: '1 1' }} sx={{ display: ['none', null, 'block'] }}>
+            {randomPosts.slice(2, 3).map(post => (
+              <ArticleCard type='vertical' key={post.id} post={post} />
+            ))}
+          </Box>
+          <Box style={{ flex: '1 1' }} sx={{ display: ['block', null, 'none'] }}>
+            {randomPosts.slice(2, 3).map(post => (
+              <ArticleCard key={post.id} post={post} />
+            ))}
+          </Box>
+          <div style={{ flex: '1 1', display: 'flex', flexDirection: 'column', gap: 15 }}>
+            {randomPosts.slice(3, 6).map(post => (
+              <ArticleCard key={post.id} post={post} />
+            ))}
+          </div>
+        </Box>
+      </Hero>
+      <Hero
+        pt={4}
+        pb={5}
+      >
+        <SectionDivider title='Tecnología' />
+        <Grid>
+          {techPosts.map(post => (
+            <ArticleCard type='vertical' key={post.id} post={post} />
+          ))}
+        </Grid>
+      </Hero>
+      <Hero
+        pt={4}
+        pb={5}
+      >
+        <SectionDivider title='Física' />
+        <Grid>
+          {fisicaPosts.map(post => (
+            <ArticleCard type='vertical' key={post.id} post={post} />
+          ))}
+        </Grid>
       </Hero>
     </LayoutBlog>
   )

@@ -11,10 +11,10 @@ const styles = {
   }
 }
 
-const NavigationList = ({ navKey, wrapperProps, items, ...props }) =>
+const NavigationList = ({ navKey, wrapperProps, items, variant, ...props }) =>
   items
     ? (
-      <Flex {...wrapperProps}>
+      <Flex style={{ gap: 30, margin: '0px 12px', justifyContent: 'flex-end', flexDirection: variant === 'vertical' ? 'column' : 'row' }}>
         {items.map((menuItem, index) => (
           <NavigationItem key={`${navKey}-${index}`} {...menuItem} {...props} />
         ))}
@@ -44,7 +44,7 @@ const NavigationItem = ({
       ...linkProps,
       as: 'a',
       href: url,
-      target: '_blank',
+      // target: '_blank',
       rel: 'noopener noreferrer'
     }
   }
@@ -101,10 +101,10 @@ const Navigation = ({
             <NavigationDivider index={i} />
             <Heading {...headingProps}>{node.title}</Heading>
             <NavigationList
+              variant='vertical'
               navKey={navKey}
               wrapperProps={wrapperProps}
               items={node.items}
-              variant={linkVariant}
               {...props}
             />
           </Fragment>
@@ -113,9 +113,9 @@ const Navigation = ({
     : (
       <NavigationList
         navKey={navKey}
+        variant='horizontal'
         wrapperProps={wrapperProps}
         items={items}
-        variant={linkVariant}
         {...props}
       />
       )

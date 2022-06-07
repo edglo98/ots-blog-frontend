@@ -1,0 +1,119 @@
+.contentContainer {
+  flex: 1 1 0px;
+  min-width: 225px;
+}
+
+.mainContainer {
+  display: flex;
+  box-shadow: rgba(1, 1, 1, 0.05) 1px 1px 5px 0px;
+  padding: 5px;
+  background-color: var(--theme-ui-colors-contentBg,#2d3748);
+  border-radius: 1rem;
+  border-left-color: 5px solid var(--theme-ui-colors-alphaLight,#5a67d8);
+  gap: 10px;
+  transition: transform 250ms ease 0s, box-shadow 250ms ease 0s, color 250ms ease 0s;
+  min-width: 225px;
+  height: 100%;
+}
+
+.mainContainer:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: rgba(46, 41, 51, 0.08) 0px 2px 4px, rgba(71, 63, 79, 0.16) 0px 5px 10px;
+}
+
+.mainContainer div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  gap: 10px;
+}
+
+.mainContainer h2 {
+  margin: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.mainContainer p {
+  margin: 5px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.mainContainer figure {
+  width: 40%;
+  min-width: 40%;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 0;
+}
+
+.mainContainer figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.containerVertical {
+  flex-direction: column;
+  border-left: none;
+  height: 100%;
+}
+
+.containerVertical figure {
+  width: 100%;
+  min-width: 100%;
+  height: 40%;
+  min-height: 40%;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.containerVertical div {
+  flex: 1;
+}
+
+.containerVertical div span {
+  flex: 1;
+  justify-content: flex-end;
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.containerImage {
+  border-left: none;
+  position: relative;
+  padding: 1.3rem;
+  color: white;
+}
+
+.containerImage h2 {
+  font-size: 1.8rem;
+}
+
+.containerImage figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.containerImage img {
+  opacity: 0.6;
+}
+
+.containerImage div {
+  z-index: 11;
+}
+
+.truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

@@ -2,19 +2,17 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 const useBlogCategories = () => {
   const res = useStaticQuery(categoriesQuery)
-  return res.allStrapiCategory.edges.map(edge => edge.node)
+  return res.allStrapiCategory.nodes
 }
 
 const categoriesQuery = graphql`
   query {
     allStrapiCategory {
-      edges {
-        node {
-          id
-          color
-          title
-          code
-        }
+      nodes {
+        name
+        color
+        code
+        id
       }
     }
   }
