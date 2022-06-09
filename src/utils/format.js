@@ -2,7 +2,7 @@ export const capitalizeFirstWord = (text) => text.charAt(0).toUpperCase() + text
 
 export function calculateReadTime(item) {
   const wpm = 225;
-  const content = JSON.parse(item.content.data.content)
+  const content = item.content
   const words = content.blocks.reduce((counter, item) => {
     if (item.type === 'image') return counter
     const text = item.data?.text || ''
@@ -26,3 +26,13 @@ export const formatDate = (
   const dateFormat = new Intl.DateTimeFormat('es-ES', options);
   return dateFormat.format(date);
 };
+
+/**
+ * @param {Intl.NumberFormatOptions} params
+ * @param {number} number
+ * @returns number with 2 decimals
+ */
+
+export const formatNumber = (number, params) => {
+  return new Intl.NumberFormat('es-ES', params).format(number);
+}

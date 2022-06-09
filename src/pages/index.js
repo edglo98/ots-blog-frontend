@@ -1,17 +1,17 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
-import { LayoutBlog } from '../layouts/LayoutBlog'
 import './index.module.css'
-import useSiteMetadata from '../hooks/useSiteMetadata'
-import useBlogCategories from '../hooks/useBlogCategories'
+import { ArticleCard } from '../components/ArticleCard/ArticleCard'
 import { Box } from 'theme-ui'
+import { Carousel } from '../components/Carousel/Carousel'
+import { graphql, useStaticQuery } from 'gatsby'
+import { Grid } from '../components/Grid/Grid'
+import { Hero } from '../components/Hero/Hero'
+import { LayoutBlog } from '../layouts/LayoutBlog'
+import { SectionDivider } from '../components/SectionDivider/SectionDivider'
 import Categories from '../components/Categories/Categories'
 import Divider from '../components/Divider/Divider'
-import { Hero } from '../components/Hero/Hero'
-import { Carousel } from '../components/Carousel/Carousel'
-import { ArticleCard } from '../components/ArticleCard/ArticleCard'
-import { SectionDivider } from '../components/SectionDivider/SectionDivider'
-import { Grid } from '../components/Grid/Grid'
+import useBlogCategories from '../hooks/useBlogCategories'
+import useSiteMetadata from '../hooks/useSiteMetadata'
 
 export default function Home (props) {
   const { title } = useSiteMetadata()
@@ -157,10 +157,8 @@ export default function Home (props) {
         limit: 6,
         sort: {fields: updatedAt, order: DESC},
         filter: {
-          tags: {
-            elemMatch:{
-              code: {eq: "tecnologia-1"}
-            }
+          category: {
+            code: { eq: "tecnologia-1"}
           }
         }
       ) {
@@ -206,34 +204,37 @@ export default function Home (props) {
   `)
 
   const last3 = postsResponse.lastPostsSorts.nodes.map(post => ({
+    ...post,
     description: post.seo_description,
     image: process.env.STRAPI_API_URL + post.miniature.url,
-    ...post
+    content: JSON.parse(post.content.data.content)
   }))
 
   const randomPosts = postsResponse.randomPosts.nodes.map(post => ({
+    ...post,
     description: post.seo_description,
     image: process.env.STRAPI_API_URL + post.miniature.url,
-    ...post
+    content: JSON.parse(post.content.data.content)
   }))
 
   const fisicaPosts = postsResponse.fisicaPosts.nodes.map(post => ({
+    ...post,
     description: post.seo_description,
     image: process.env.STRAPI_API_URL + post.miniature.url,
-    ...post
+    content: JSON.parse(post.content.data.content)
   }))
 
   const techPosts = postsResponse.techPosts.nodes.map(post => ({
+    ...post,
     description: post.seo_description,
     image: process.env.STRAPI_API_URL + post.miniature.url,
-    ...post
+    content: JSON.parse(post.content.data.content)
   }))
 
   return (
     <LayoutBlog>
       <Hero
-        pt={4}
-        pb={5}
+        pb={4}
         sx={{
           background: t =>
             `linear-gradient(
@@ -272,8 +273,8 @@ export default function Home (props) {
       </Hero>
 
       <Hero
-        pt={4}
-        pb={5}
+        pt={2}
+        pb={3}
       >
         <SectionDivider title='Últimos articulos' />
         <Box style={{ display: 'flex', gap: 15, flexWrap: 'wrap' }} sx={{ flexDirection: ['column', null, 'row'] }}>
@@ -300,8 +301,8 @@ export default function Home (props) {
         </Box>
       </Hero>
       <Hero
-        pt={4}
-        pb={5}
+        pt={2}
+        pb={3}
       >
         <SectionDivider title='Tecnología' />
         <Grid>
@@ -310,10 +311,7 @@ export default function Home (props) {
           ))}
         </Grid>
       </Hero>
-      <Hero
-        pt={4}
-        pb={5}
-      >
+      <Hero pt={2}>
         <SectionDivider title='Física' />
         <Grid>
           {fisicaPosts.map(post => (

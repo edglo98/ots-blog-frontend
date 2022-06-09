@@ -7,7 +7,9 @@ const useBlogCategories = () => {
 
 const categoriesQuery = graphql`
   query {
-    allStrapiCategory {
+    allStrapiCategory (
+      limit: 6
+    ) {
       nodes {
         name
         color

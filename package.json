@@ -15,6 +15,7 @@
     "dotenv": "^16.0.1",
     "editorjs-html": "^3.4.2",
     "gatsby": "^4.14.1",
+    "gatsby-awesome-pagination": "^0.3.8",
     "gatsby-plugin-feed": "^4.15.1",
     "gatsby-plugin-gatsby-cloud": "^4.14.0",
     "gatsby-plugin-image": "^2.14.1",

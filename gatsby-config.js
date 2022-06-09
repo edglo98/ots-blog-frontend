@@ -158,8 +158,8 @@ module.exports = {
                 return Object.assign({}, node, {
                   description: node.seo_description,
                   date: node.publication_date,
-                  url: site.siteMetadata.siteUrl + node.slug,
-                  guid: site.siteMetadata.siteUrl + node.slug,
+                  url: site.siteMetadata.siteUrl + '/' + node.slug,
+                  guid: site.siteMetadata.siteUrl + '/' + node.slug,
                   custom_elements: [{ 'content:encoded': html }]
                 })
               })

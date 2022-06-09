@@ -1,0 +1,46 @@
+html{scroll-behavior:smooth}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: var(--theme-ui-colors-contentBg,#fff);
+  border-radius: 8rem;
+  position: relative;
+  padding: .4rem;
+}
+
+.pagination p, .pagination h4 {
+  margin: 1rem 0;
+}
+
+.pagination p span{
+  font-weight: 600;
+}
+
+.before, .after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8rem;
+  background-color: var(--theme-ui-colors-omegaLight,#e2e8f0);
+  width: 30%;
+  position: absolute;
+}
+
+.before:hover, .after:hover {
+  color: var(--theme-ui-colors-white,#fff);
+  background-color: var(--theme-ui-colors-alpha,#667eea);
+}
+
+.after {
+  right: .4rem;
+}
+
+.before {
+  left: .4rem;
+}
