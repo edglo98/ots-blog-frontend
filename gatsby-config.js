@@ -16,51 +16,37 @@ const siteMetadata = {
   description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.',
   author: 'OTS',
   siteUrl: 'https://ots.mx/',
-  headerMenu: [
-    {
-      name: 'Home',
-      slug: '/'
-    },
-    {
-      name: 'Our Team',
-      slug: '/authors'
-    },
-    {
-      name: 'Contact',
-      slug: '/contact'
-    }
-  ],
   footerMenu: [
     {
-      title: 'Quick Links',
+      title: 'Sobre nostros',
       items: [
         {
-          name: 'Advertise with us',
+          name: 'Contactanos',
           slug: '/contact'
         },
         {
-          name: 'About Us',
+          name: 'Nosotros',
           slug: '/about'
         },
         {
-          name: 'Contact Us',
+          name: 'Contacto',
           slug: '/contact'
         }
       ]
     },
     {
-      title: 'Legal Stuff',
+      title: 'Avisos',
       items: [
         {
-          name: 'Privacy Notice',
+          name: 'Privacidad',
           slug: '/'
         },
         {
-          name: 'Cookie Policy',
+          name: 'Politicas',
           slug: '/'
         },
         {
-          name: 'Terms Of Use',
+          name: 'Terminos',
           slug: '/'
         }
       ]

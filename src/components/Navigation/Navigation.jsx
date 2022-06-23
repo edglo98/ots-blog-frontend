@@ -81,7 +81,6 @@ const Navigation = ({
   if (!items || !items.length) return null
 
   const wrapperVariant = buildResponsiveVariant('lists.links', variant)
-  const linkVariant = buildResponsiveVariant('links', variant)
 
   const navKey = `${hashCode(
     items.map(node => node.title || node.name).join()

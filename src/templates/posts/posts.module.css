@@ -99,6 +99,23 @@
   text-align: right;
 }
 
+.popover {
+  position: relative;
+}
+
+.popoverPanel {
+  position: absolute;
+  background-color: white;
+  padding: 0 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
+}
+
+.popoverPanel p {
+  margin: 5px 0;
+  color: black;
+}
+
 @media screen and (max-width: 740px) {
   .title {
     font-size: 1.5em;

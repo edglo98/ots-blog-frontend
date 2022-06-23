@@ -40,7 +40,14 @@ const theme = merge(typography, {
   messages,
   forms,
   layout,
-  global
+  global,
+  alerts: {
+    primary: {
+      color: 'text',
+      bg: '#d70022',
+      padding: '0.2rem 1rem'
+    }
+  }
 })
 
 export default theme

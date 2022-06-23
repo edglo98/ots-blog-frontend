@@ -10,6 +10,10 @@ import { Link as GatsbyLink } from 'gatsby'
 import { SectionDivider } from '../../components/SectionDivider/SectionDivider'
 import * as styles from './posts.module.css'
 import edjsHTML from 'editorjs-html'
+import { FaClipboard } from 'react-icons/fa'
+import { Popover } from '@headlessui/react'
+import { useAuthContext } from '../../hooks/useAuth'
+import { Button } from '../../components/Button/Button'
 
 function rawParser (block) {
   return `<code> ${block.data.html} </code>`
@@ -47,6 +51,7 @@ const edjsParser = edjsHTML({
 })
 
 export default function Posts (props) {
+  const { user } = useAuthContext()
   const { post: pagePost, prevPost, nextPost, releatedPosts } = props.pageContext
   const html = edjsParser.parse(pagePost.content)
   const writer = pagePost.admin_users[0]
@@ -59,13 +64,15 @@ export default function Posts (props) {
       ...post
     }
   })
-  console.log('releatedPosts', releatedPostsWithImage)
 
   const handleCopyUrlInPath = () => {
     const url = window.location.href
     navigator.clipboard.writeText(url)
   }
 
+  const isPremiunUser = user && user.subscription.status === 'active'
+
+  console.log(pagePost)
   return (
     <LayoutBlog>
       <Hero>
@@ -116,8 +123,16 @@ export default function Posts (props) {
               }}
             >
 
-              <ContentResolver html={html.join('')} />
-
+              {
+              pagePost.premium
+                ? isPremiunUser
+                  ? <ContentResolver html={html.join('')} />
+                  : <div>
+                    <h2>¡Este contenido solo esta disponible para usuarios Premium!</h2>
+                    <Link as={GatsbyLink} to='/me'><Button title='¡Quiero ser Premium!' /></Link>
+                  </div>
+                : <ContentResolver html={html.join('')} />
+              }
               <SectionDivider />
               <div className={styles.tags}>
                 <span style={{ fontWeight: 550, marginRight: 10 }}>Tags </span>
@@ -127,9 +142,15 @@ export default function Posts (props) {
               </div>
               <div className={styles.tags}>
                 <span style={{ fontWeight: 550, marginRight: 10 }}>Compartir </span>
-                <button onClick={handleCopyUrlInPath}>
-                  <Chip bgColor='gray' title='🔗' fontSize='.9rem' />
-                </button>
+                <Popover className={styles.popover} onClick={handleCopyUrlInPath}>
+                  <Popover.Button>
+                    <Chip bgColor='transparent' title={<FaClipboard color='black' size={24} />} fontSize='.9rem' />
+                  </Popover.Button>
+
+                  <Popover.Panel className={styles.popoverPanel}>
+                    <p>¡Copiado!</p>
+                  </Popover.Panel>
+                </Popover>
               </div>
               <SectionDivider />
               <Box

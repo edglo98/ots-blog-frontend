@@ -1,0 +1,47 @@
+.overlay {
+  position: fixed;  
+  top: 0; 
+  right: 100%;  
+  width: 100%;
+  background-color: #222;
+  opacity: 0;
+  transition: opacity .5s cubic-bezier(.77,0,.175,1);
+  z-index: 999;
+  height: 100vh;
+}
+
+.overlayOpen {
+  right: 0;
+  opacity: 0.9;
+}
+
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: translate(100%, 0);
+  width: 40%;
+  height: 100vh;
+  transition: all .5s cubic-bezier(.77,0,.175,1);
+  z-index: 9999;
+}
+
+.openPanel {
+  transform: translate(0, 0);
+  box-shadow: 0 0 45px 0 rgba(0,0,0,.25);
+}
+
+.panelContent {
+  position: relative;
+  height: 100%;
+  z-index: 2;
+  overflow-y: scroll;
+  font-size: 1.5rem;
+  padding: 3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .panel {
+    width: 75%;
+  }
+}

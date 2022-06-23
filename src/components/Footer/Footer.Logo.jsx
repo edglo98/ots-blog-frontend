@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from 'theme-ui'
-import { HeaderLogo } from '../Header/Header.Logo'
+import Logo from '../../images/logoOTS4.svg'
 
 const styles = {
   logo: {
@@ -17,7 +17,7 @@ const styles = {
 export const FooterLogo = () => (
   <>
     <Box sx={styles.logo}>
-      <HeaderLogo grayscale />
+      <Logo />
     </Box>
     {/* <Box sx={styles.copyright}>
       {new Date().getFullYear()}

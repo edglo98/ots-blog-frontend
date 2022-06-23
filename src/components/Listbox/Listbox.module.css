@@ -1,0 +1,122 @@
+.listboxConatiner {
+  position: relative; 
+  margin-top: 0.25rem; 
+}
+
+.button {
+  position: relative; 
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem; 
+  padding-left: 0.75rem; 
+  padding-right: 2.5rem; 
+  background-color: var(--theme-ui-colors-omegaLight); 
+  text-align: left; 
+  width: 100%; 
+  border-radius: 5px; 
+  border: 1px solid #5f6369;
+  cursor: pointer;
+  color: var(--theme-ui-colors-text); 
+}
+
+.buttonTitle {
+  display: block; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+}
+
+.icon {
+  display: flex; 
+  position: absolute; 
+  top: 0;
+  bottom: 0; 
+  right: 0; 
+  padding-right: 0.5rem; 
+  display: flex; 
+  align-items: center; 
+  pointer-events: none; 
+}
+
+.listBoxLeave {
+  transition-property: opacity; 
+  transition-duration: 100ms; 
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1); 
+}
+
+.listBoxLeaveFrom {
+  opacity: 1; 
+}
+
+.listBoxLeaveTo {
+  opacity: 0; 
+}
+
+.listbox {
+  overflow: auto;
+  position: absolute;
+  z-index: 11;
+  top: 100%;
+  left: 0;
+  padding: 1rem 0;
+  margin-top: 0.25rem; 
+  background-color: var(--theme-ui-colors-omegaLight); 
+  font-size: 1rem;
+  line-height: 1.5rem; 
+  width: 100%; 
+  border-radius: 5px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
+}
+
+.option {
+  position: relative; 
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem; 
+  padding-right: 1rem; 
+  padding-left: 2.5rem; 
+  cursor: default; 
+  user-select: none;
+  background-color: var(--theme-ui-colors-omegaLight);
+}
+
+.option:hover {
+  background-color: var(--theme-ui-colors-alphaLight); 
+}
+
+.current {
+  display: block; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+}
+
+.selected {
+  font-weight: bold;
+}
+
+.noSelected {
+  font-weight: 400; 
+}
+
+.checkIcon {
+  display: flex; 
+  position: absolute; 
+  top: 0;
+  bottom: 0; 
+  left: 0; 
+  padding-left: 0.75rem; 
+  display: flex; 
+  align-items: center;
+  color: var(--theme-ui-colors-alpha);
+  font-weight: bold;
+}
+
+@media (min-width: 640px) { 
+   .button {
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+   }
+   .listbox {
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+   }
+}

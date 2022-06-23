@@ -1,10 +1,10 @@
 import React from 'react'
-import { Container, Box, Flex } from 'theme-ui'
-// import pageContextProvider from '@helpers/pageContextProvider'
+import { Container, Box, Flex, Link } from 'theme-ui'
 import Search from '../Search'
-import { HeaderLogo } from './Header.Logo'
-import { HeaderMenu } from './Header.Menu'
-import { HeaderColorMode } from './Header.ColorMode'
+import Logo from '../../images/logoOTS4.svg'
+import { DrawerMenu } from '../DrawerMenu/DrawerMenu'
+import { ThemeButton } from '../ThemeButton/ThemeButton'
+import { Link as GatsbyLink } from 'gatsby'
 
 const styles = {
   wrapper: {
@@ -15,26 +15,7 @@ const styles = {
     position: 'relative',
     zIndex: 10
   },
-  logoContainer: {
-    flexBasis: ['full', null, '1/3']
-  },
-  searchContainer: {
-    flexBasis: ['auto', null, '1/3'],
-    minWidth: 'auto',
-    order: [3, null, 'unset'],
-    mx: 3
-  },
-  menuContainer: {
-    flexBasis: ['auto', null, '1/3'],
-    minWidth: 'auto',
-    order: [4, null, 'unset']
-  },
-  colorModeContainer: {
-    minWidth: 'auto',
-    order: [2, null, 'unset']
-  },
   header: {
-    justifyContent: 'space-between',
     alignItems: 'center',
     height: ['6rem', '7rem'], // prevent layout shift
     py: [3, 4]
@@ -42,27 +23,29 @@ const styles = {
 }
 
 export const Header = ({ children }) => {
-  // const context = useContext(pageContextProvider)
-
-  // const { services, mobileMenu, darkMode } = context.pageContext
-
-  // const algolia = services && services.algolia
-
   return (
     <Box sx={styles.wrapper}>
       <Container variant='compact' sx={styles.container}>
         <Flex sx={styles.header}>
-          <Box sx={styles.logoContainer}>
-            <HeaderLogo />
-          </Box>
-          <Box sx={styles.searchContainer}><Search /></Box>
-          <Box sx={styles.menuContainer}>
-            <HeaderMenu />
-            {/* mobileMenu={mobileMenu} */}
-          </Box>
-          <Box sx={styles.colorModeContainer}>
-            <HeaderColorMode />
-          </Box>
+          <Link as={GatsbyLink} style={{ cursor: 'pointer' }} to='/'>
+            <Logo />
+          </Link>
+          <Flex sx={{ alignItems: 'center', flex: 1, justifyContent: 'flex-end', gap: '.5rem' }}>
+            <Box sx={{ flex: ['initial', 'initial', 1], padding: ['0', '0', '0px 3rem'] }}>
+              <div style={{
+                maxWidth: '580px',
+                width: '100%',
+                margin: '0 auto'
+              }}
+              >
+                <Search />
+              </div>
+            </Box>
+            <ThemeButton />
+            <Box>
+              <DrawerMenu />
+            </Box>
+          </Flex>
         </Flex>
       </Container>
       {children}
