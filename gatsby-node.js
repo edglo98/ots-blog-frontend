@@ -2,6 +2,7 @@ const { paginate } = require('gatsby-awesome-pagination')
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
+
   const categories = await graphql(`
     query {
       allStrapiCategory {

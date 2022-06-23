@@ -50,3 +50,30 @@ export const getUserSession = async () => {
     throw new Error(error)
   }
 }
+
+export const sendEmail = async ({
+  business_type,
+  email,
+  name,
+  need,
+  perfile_type,
+  request,
+  sector_type,
+  phone
+}) => {
+  try {
+    const { data } = await axios.post(process.env.STRAPI_API_URL + '/api/send-email', {
+      business_type,
+      email,
+      name,
+      need,
+      perfile_type,
+      request,
+      sector_type,
+      phone
+    })
+    return data
+  } catch (error) {
+    throw new Error(error)
+  }
+}
