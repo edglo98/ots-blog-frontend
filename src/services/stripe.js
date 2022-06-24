@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const LOOKUP_KEY = 'OTS_SUB'
+const LOOKUP_KEY = 'OTS-PREMIUM'
 
 export const createStripeCheckoutSession = async (userId) => {
   try {
