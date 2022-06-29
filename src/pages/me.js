@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Box } from 'theme-ui'
 import { Button } from '../components/Button/Button'
+import { createStripeCheckoutSession, createStripePortalSession } from '../services/stripe'
 import { FaEnvelope, FaLock, FaUser } from 'react-icons/fa'
 import { Hero } from '../components/Hero/Hero'
+import { Chip } from '../components/Chip/Chip'
 import { LayoutBlog } from '../layouts/LayoutBlog'
+import { navigate } from 'gatsby'
 import { TextInput } from '../components/TextInput/TextInput'
 import { useAuthContext } from '../hooks/useAuth'
 import * as styles from './me.module.css'
-import { createStripeCheckoutSession, createStripePortalSession } from '../services/stripe'
-import { navigate } from 'gatsby'
 
 export default function Me () {
   const { isLoading, user } = useAuthContext()
@@ -131,6 +132,7 @@ export default function Me () {
               <div>
                 <h3 style={{ margin: 0, marginLeft: '.5rem' }}>Configuración de suscripción</h3>
                 <p style={{ margin: 0, marginLeft: '.5rem' }}>Esta es tu configuración de suscripción a OTS</p>
+                <p>Estado de tú suscripción: <Chip  title={user?.subscription?.status || '-'} bgColor={user?.subscription?.status === 'active' ? '#58AF2F' : '#A4A4A4'}/> </p>
               </div>
               <div>
                 {

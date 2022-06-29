@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
+import { Button } from '../Button/Button'
 import { Dialog, Transition } from '@headlessui/react'
 import { FaTimes } from 'react-icons/fa'
-import { Button } from '../Button/Button'
 import * as styles from './Modal.module.css'
 
 export function Modal (props) {

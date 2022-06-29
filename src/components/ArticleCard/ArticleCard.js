@@ -41,7 +41,11 @@ export function ArticleCard ({ post, type = 'horizontal', showCategory = true })
           <h2 className={styles.truncate}>{post.title}</h2>
           {type === 'vertical' && <p className={styles.truncate}>{post.seo_description}</p>}
           <span>
-            <p style={{ fontWeight: 200 }}>{`${post.admin_users[0].firstname} ${post.admin_users[0].lastname}`}</p>
+            {
+              post.admin_users[0] && (
+                <p style={{ fontWeight: 200 }}>{`${post.admin_users[0].firstname} ${post.admin_users[0].lastname}`}</p>
+              )
+            }
             <p style={{ fontWeight: 200 }}>{formatDate(new Date(post.publication_date))} &bull; {calculateReadTime(post)}min</p>
           </span>
         </div>

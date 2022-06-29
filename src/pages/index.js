@@ -110,7 +110,7 @@ export default function Home (props) {
         sort: {fields: updatedAt, order: DESC},
         filter: {
           category: {
-            code: { eq: "fisica-1"}
+            code: { eq: "fisica"}
           }
         }
       ) {
@@ -158,7 +158,7 @@ export default function Home (props) {
         sort: {fields: updatedAt, order: DESC},
         filter: {
           category: {
-            code: { eq: "tecnologia-1"}
+            code: { eq: "tecnologia"}
           }
         }
       ) {

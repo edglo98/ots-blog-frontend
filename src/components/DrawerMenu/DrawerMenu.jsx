@@ -1,9 +1,9 @@
 
 import React, { useState } from 'react'
-import { FaBars, FaTimes } from 'react-icons/fa'
 import { Box, IconButton, Link } from 'theme-ui'
-import { useAuthContext } from '../../hooks/useAuth'
 import { Button } from '../Button/Button'
+import { FaBars, FaTimes } from 'react-icons/fa'
+import { useAuthContext } from '../../hooks/useAuth'
 import * as styles from './DrawerMenu.module.css'
 
 export function DrawerMenu () {
