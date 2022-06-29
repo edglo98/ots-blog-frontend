@@ -1,10 +1,10 @@
 import React from 'react'
 import { Container, Box, Flex, Link } from 'theme-ui'
 import Search from '../Search'
-import Logo from '../../images/logoOTS4.svg'
 import { DrawerMenu } from '../DrawerMenu/DrawerMenu'
 import { ThemeButton } from '../ThemeButton/ThemeButton'
 import { Link as GatsbyLink } from 'gatsby'
+import { Logo } from '../../images'
 
 const styles = {
   wrapper: {

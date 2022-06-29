@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from 'theme-ui'
-import Logo from '../../images/logoOTS4.svg'
+import { Logo } from '../../images'
 
 const styles = {
   logo: {
