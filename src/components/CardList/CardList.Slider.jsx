@@ -64,7 +64,6 @@ const CardListSlider = React.forwardRef((props, ref) => {
       }
     }
   )
-  console.log({controlPosition})
   let settings = {
     ref,
     beforeChange,

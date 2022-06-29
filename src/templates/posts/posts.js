@@ -72,7 +72,6 @@ export default function Posts (props) {
 
   const isPremiunUser = user && user.subscription.status === 'active'
 
-  console.log(pagePost)
   return (
     <LayoutBlog>
       <Hero>

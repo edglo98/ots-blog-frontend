@@ -91,7 +91,6 @@ const Register = ({ isOpen, onClose, onBack }) => {
       return
     }
     const { password2, ...registerData } = data
-    console.log('registerData', registerData)
     actions.registerUser(registerData)
       .then(() => {
         onClose()

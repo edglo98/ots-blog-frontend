@@ -42,7 +42,6 @@ export default function Me () {
 
   const handleCreateCheckout = async () => {
     const response = await createStripeCheckoutSession(user.id)
-    console.log('response createStripeCheckoutSession', response)
     window.open(response.urlSession)
   }
 
