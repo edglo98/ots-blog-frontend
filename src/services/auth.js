@@ -7,9 +7,11 @@ const query = qs.stringify({
   encodeValuesOnly: true
 })
 
+const backUrl = 'https://ots-back.herokuapp.com'
+
 export const login = async (email, pass) => {
   try {
-    const { data } = await axios.post(process.env.STRAPI_API_URL + `/api/auth/local?${query}`, {
+    const { data } = await axios.post(backUrl + `/api/auth/local?${query}`, {
       identifier: email,
       password: pass
     })
@@ -22,7 +24,7 @@ export const login = async (email, pass) => {
 
 export const register = async ({ username, email, password }) => {
   try {
-    const { data } = await axios.post(process.env.STRAPI_API_URL + `/api/auth/local/register?${query}`, {
+    const { data } = await axios.post(backUrl + `/api/auth/local/register?${query}`, {
       username,
       email,
       password
@@ -40,7 +42,7 @@ export const getUserSession = async () => {
     if (!token) {
       return null
     }
-    const { data } = await axios.get(process.env.STRAPI_API_URL + `/api/users/me?${query}`, {
+    const { data } = await axios.get(backUrl + `/api/users/me?${query}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -62,7 +64,7 @@ export const sendEmail = async ({
   phone
 }) => {
   try {
-    const { data } = await axios.post(process.env.STRAPI_API_URL + '/api/send-email', {
+    const { data } = await axios.post(backUrl + '/api/send-email', {
       business_type,
       email,
       name,
