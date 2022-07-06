@@ -71,6 +71,9 @@ export const AuthProvider = props => {
         }
         setIsLoading(false)
       })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }, [])
 
   return (

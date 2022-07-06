@@ -17,7 +17,6 @@ export default function Category (props) {
     content: JSON.parse(post.content.data.content)
   }))
 
-
   return (
     <LayoutBlog>
       <Hero
