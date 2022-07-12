@@ -73,7 +73,7 @@ export default function contact () {
           margin: '0 auto'
         }}
       >
-        <h1 style={{ textAlign: 'center', fontWeight: 550 }}>Contacta con nosotros</h1>
+        <h1 style={{ textAlign: 'center', fontWeight: 550 }}>Contáctanos</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Box
             className={styles.content}
@@ -93,7 +93,7 @@ export default function contact () {
               </span>
               <span>
                 <TextInput
-                  placeholder='Nombred de completo'
+                  placeholder='Nombre de completo'
                   icon={<FaUser />}
                   register={register('name', {
                     required: {

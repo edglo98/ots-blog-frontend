@@ -105,12 +105,12 @@ export default function Home (props) {
         }
       }
 
-      fisicaPosts: allStrapiPost(
+      ecologiaPosts: allStrapiPost(
         limit: 6,
         sort: {fields: updatedAt, order: DESC},
         filter: {
           category: {
-            code: { eq: "fisica"}
+            code: { eq: "ecologia"}
           }
         }
       ) {
@@ -217,7 +217,7 @@ export default function Home (props) {
     content: JSON.parse(post.content.data.content)
   }))
 
-  const fisicaPosts = postsResponse.fisicaPosts.nodes.map(post => ({
+  const ecologiaPosts = postsResponse.ecologiaPosts.nodes.map(post => ({
     ...post,
     description: post.seo_description,
     image: process.env.STRAPI_API_URL + post.miniature.url,
@@ -312,9 +312,9 @@ export default function Home (props) {
         </Grid>
       </Hero>
       <Hero pt={2}>
-        <SectionDivider title='Física' />
+        <SectionDivider title='Ecología' />
         <Grid>
-          {fisicaPosts.map(post => (
+          {ecologiaPosts.map(post => (
             <ArticleCard type='vertical' key={post.id} post={post} />
           ))}
         </Grid>

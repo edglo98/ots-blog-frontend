@@ -18,36 +18,74 @@ const siteMetadata = {
   siteUrl: 'https://ots.mx/',
   footerMenu: [
     {
-      title: 'Sobre nostros',
+      title: 'OTS',
       items: [
         {
-          name: 'Contactanos',
+          name: 'Contáctanos',
           slug: '/contact'
         },
         {
-          name: 'Nosotros',
-          slug: '/about'
+          name: '¿Quiénes somos?',
+          slug: '/about#quienes-somos'
         },
         {
-          name: 'Contacto',
-          slug: '/contact'
+          name: 'Enfoque',
+          slug: '/about#enfoque'
+        },
+        {
+          name: 'Equipo',
+          slug: '/about#equipo'
         }
       ]
     },
     {
-      title: 'Avisos',
+      title: 'Alianza',
       items: [
         {
-          name: 'Privacidad',
-          slug: '/'
+          name: 'Centro de investigación',
+          slug: '/alliance#centro-investigacion'
         },
         {
-          name: 'Politicas',
-          slug: '/'
+          name: 'Entidades de gobierno',
+          slug: '/alliance#entidades-gobierno'
         },
         {
-          name: 'Terminos',
-          slug: '/'
+          name: 'Empresas',
+          slug: '/alliance#empresas'
+        }
+      ]
+    },
+    {
+      title: 'Servicios',
+      items: [
+        {
+          name: 'Tecnologicos',
+          slug: '/technology'
+        },
+        {
+          name: 'De desarrollo',
+          slug: '/developing'
+        }
+      ]
+    },
+    {
+      title: 'Recursos',
+      items: [
+        {
+          name: 'Boletines',
+          slug: '/resources#boletines'
+        },
+        {
+          name: 'Estudios/Informes',
+          slug: '/resources#estudios-informes'
+        },
+        {
+          name: 'Videos',
+          slug: '/resources#videos'
+        },
+        {
+          name: 'Miembros',
+          slug: '/resources#miembros'
         }
       ]
     }

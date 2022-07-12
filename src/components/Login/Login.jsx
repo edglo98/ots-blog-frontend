@@ -125,7 +125,7 @@ const Register = ({ isOpen, onClose, onBack }) => {
       }
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <TextInput
-          placeholder='Nombred de usuario'
+          placeholder='Nombre de usuario'
           icon={<FaUser />}
           register={register('username', { required: true })}
           error={errors.username && 'This field is required'}

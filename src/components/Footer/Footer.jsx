@@ -20,9 +20,6 @@ export const Footer = () => (
           <FooterLogo />
         </Box>
         <FooterMenu />
-        <Box>
-          <FooterSocial />
-        </Box>
       </Flex>
     </Container>
   </Box>

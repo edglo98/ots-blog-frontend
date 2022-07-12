@@ -84,7 +84,7 @@ export default function Me () {
                 </span>
                 <span>
                   <TextInput
-                    placeholder='Nombred de usuario'
+                    placeholder='Nombre de usuario'
                     icon={<FaUser />}
                     disabled
                     value={username}
