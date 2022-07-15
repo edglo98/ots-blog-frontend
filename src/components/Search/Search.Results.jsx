@@ -14,7 +14,7 @@ const Hits = ({ searchState, searchResults }) => {
   useScrollDisabler()
 
   if (!searchResults || !searchState.query) {
-    return 'What are you looking for?'
+    return '¿Qué estas buscando?'
   }
 
   if (searchResults.query !== searchState.query) {
