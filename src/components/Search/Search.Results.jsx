@@ -2,14 +2,13 @@ import React from 'react'
 import groupArray from 'group-array'
 import {
   Highlight,
-  Snippet,
-  connectStateResults,
-  PoweredBy
+  connectStateResults
 } from 'react-instantsearch-dom'
-import { Heading, Box, Spinner } from 'theme-ui'
-import Card from '../Card'
+import { Heading, Box, Spinner, Link } from 'theme-ui'
 import useScrollDisabler from '../../hooks/useScrollDisabler'
+import { Link as GatsbyLink } from 'gatsby'
 import styles from './Search.styles'
+import * as classes from './search.module.css'
 
 const Hits = ({ searchState, searchResults }) => {
   useScrollDisabler()
@@ -24,7 +23,7 @@ const Hits = ({ searchState, searchResults }) => {
   }
 
   if (searchResults && searchResults.nbHits < 1) {
-    return `No results for '${searchResults.query}'`
+    return `Sin resultados para: '${searchResults.query}'`
   } else {
     const hitsByCategory = groupArray(searchResults.hits, 'category.name')
     const categories = Object.keys(hitsByCategory)
@@ -40,18 +39,14 @@ const Hits = ({ searchState, searchResults }) => {
           const node = {
             ...hit,
             key: hit.objectID,
-            title: <Highlight hit={hit} tagName='mark' attribute='title' />,
-            excerpt: <Snippet hit={hit} tagName='mark' attribute='excerpt' />
+            title: <Highlight hit={hit} tagName='mark' attribute='title' />
           }
           return (
-            <Card
-              key={node.key}
-              variant='search'
-              {...node}
-              omitCategory
-              omitFooter
-              omitMedia
-            />
+            <Link
+              key={node.key} as={GatsbyLink} to={`/${node.slug}`}
+            >
+              <div className={classes.link}>{node.title}</div>
+            </Link>
           )
         })}
       </Box>
@@ -66,9 +61,9 @@ const Results = () => (
     <Box sx={styles.hitsWrapper}>
       <ConnectedHits />
     </Box>
-    <Box sx={styles.poweredBy}>
+    {/* <Box sx={styles.poweredBy}>
       <PoweredBy />
-    </Box>
+    </Box> */}
   </Box>
 )
 

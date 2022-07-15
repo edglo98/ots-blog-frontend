@@ -2,7 +2,6 @@ import React from 'react'
 import { Container, Box, Flex } from 'theme-ui'
 import { FooterLogo } from './Footer.Logo'
 import { FooterMenu } from './Footer.Menu'
-import { FooterSocial } from './Footer.Social'
 
 const styles = {
   wrapper: {
