@@ -43,7 +43,7 @@ export function ArticleCard ({ post, type = 'horizontal', showCategory = true })
           <span>
             {
               post.admin_users[0] && (
-                <p style={{ fontWeight: 200 }}>{`${post.admin_users[0].firstname} ${post.admin_users[0].lastname}`}</p>
+                <p style={{ fontWeight: 200 }}>{`${post.admin_users[0]?.firstname || 'Autor'} ${post.admin_users[0]?.lastname || ''}`}</p>
               )
             }
             <p style={{ fontWeight: 200 }}>{formatDate(new Date(post.publication_date))} &bull; {calculateReadTime(post)}min</p>
