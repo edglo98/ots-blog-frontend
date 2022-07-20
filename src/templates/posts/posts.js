@@ -78,7 +78,7 @@ export default function Posts (props) {
         <h1 className={styles.title}>{pagePost.title}</h1>
         <Chip bgColor={pagePost.category.color} title={pagePost.category.name} fontSize='.9rem' />
         <p className={styles.infoPost}>
-          Publicado por <span style={{ fontWeight: 550 }}>{writer.firstname || 'Autor'} {writer.lastname || ''}</span>
+          Publicado por <span style={{ fontWeight: 550 }}>{writer?.firstname || 'Autor'} {writer?.lastname || ''}</span>
           <span style={{ margin: '0px 5px' }}>
             &bull;
           </span>
